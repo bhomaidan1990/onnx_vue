@@ -1,2 +1,2 @@
-# onnx_vue
-Online Inference using VueJS, Onnx Runtime
+# webpack_boilerplate
+WebPack BoilerPlate
