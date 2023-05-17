@@ -6,8 +6,6 @@ const CopyPlugin = require("copy-webpack-plugin");
 /* Vue Loader */
 const { VueLoaderPlugin } = require('vue-loader')
 
-const nodeExternals = require('webpack-node-externals');
-
 /* HTML Template */
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -19,11 +17,6 @@ module.exports = {
     /* Entry Point */
     entry: {
         main: path.resolve(__dirname, 'src/main.js')
-    },
-    /* Node */
-    target: 'node',
-    node: {
-        __dirname: false,
     },
     /* Output Config */
     output: {
@@ -56,28 +49,13 @@ module.exports = {
         {
             test: /\.css$/,
             use: ['style-loader', 'css-loader'],
-            },
-        /* File Loader*/
-        {
-            test: /\.glb$/,
-            use:
-            [
-                {
-                    loader: 'file-loader',
-                    options:
-                    {
-                        outputPath: 'assets/resource/'
-                    }
-                }
-            ]
         },
         // Vue Loader
         {
             test: /\.vue$/,
             exclude: /node_modules/,
             loader: 'vue-loader'
-            },
-
+        },
         ]
     },
     plugins: [
@@ -105,8 +83,5 @@ module.exports = {
          */
         new webpack.DefinePlugin({ __VUE_OPTIONS_API__: true, __VUE_PROD_DEVTOOLS__: true }),
         
-    ],
-    externals: [
-        nodeExternals(),
-    ],
+    ]
 }
